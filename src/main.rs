@@ -1,7 +1,8 @@
 #[macro_use]
 extern crate clap;
+extern crate freight;
 
-use clap::{App, Arg};
+use freight::new;
 use std::process::Command;
 
 fn main() {
@@ -14,10 +15,12 @@ fn main() {
         (@arg project_name: index(1) "Custom name of project")
         (@arg FLTK: --fltk "Sets up the project as FLTK")
     )
-    )
-    .get_matches();
+    ).get_matches();
 
-    if (args.)
+    match args.subcommand() {
+        ("new", Some(sub_args)) => new::create_project(sub_args),
+        _ => (),
+    }
 }
 //
 //let args = clap_app!(Duma =>
