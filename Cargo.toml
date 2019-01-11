@@ -1,0 +1,8 @@
+[package]
+name = "freight"
+version = "0.1.0"
+authors = ["Odin Aleksander Severinsen <odin@severinsen.no>"]
+edition = "2018"
+
+[dependencies]
+clap = "2.32.0"
