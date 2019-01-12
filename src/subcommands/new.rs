@@ -1,4 +1,5 @@
 use clap::ArgMatches;
+use os_info;
 use std::process::Command;
 
 pub fn create_project(args: &ArgMatches) {
@@ -7,12 +8,9 @@ pub fn create_project(args: &ArgMatches) {
         .arg("hello.txt")
         .spawn()
         .expect("failed to execute process");
-    let os = get_os();
-    println!("Your OS is {}", os);
-    Command::new("echo")
-        .arg("$(pwd)")
-        .spawn()
-        .expect("failed to execute process");
+    //let os = get_os();
+    let info = os_info::get();
+    println!("Your OS is {}", info.os_type());
 }
 
 fn get_os() -> String {
@@ -21,17 +19,5 @@ fn get_os() -> String {
             .output()
             .expect("failed to execute uname")
             .stdout,
-    )
-    .to_string()
+    ).to_string()
 }
-
-enum Os {
-    Windows,
-    Linux,
-    Mac,
-}
-//
-//impl Os {
-//    fn new() -> Self {}
-//}
-//

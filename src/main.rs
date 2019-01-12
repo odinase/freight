@@ -2,7 +2,7 @@
 extern crate clap;
 extern crate freight;
 
-use freight::new;
+use freight::subcommands::new;
 use std::env;
 
 fn main() {
@@ -19,8 +19,7 @@ fn main() {
         (@arg project_name: index(1) "Custom name of project")
         (@arg FLTK: --fltk "Sets up the project as FLTK")
     )
-    )
-    .get_matches();
+    ).get_matches();
 
     //println!("{:?}", args);
 
