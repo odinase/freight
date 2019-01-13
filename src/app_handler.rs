@@ -19,9 +19,8 @@ impl<'a> AppHandle<'a> {
             (@arg project_name: index(1) "Custom name of project")
             (@arg FLTK: --fltk "Sets up the project as FLTK")
         )
-        )
-        .get_matches();
-        let working_dir = String::from(env::current_dir().unwrap().to_str().unwrap());
+        ).get_matches();
+        let working_dir = String::from(env::current_dir().into_os_string().into_string().unwrap());
         let os = os_info::get().to_string();
 
         AppHandle {
